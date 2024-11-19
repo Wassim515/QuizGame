@@ -22,4 +22,4 @@ public class GameTimer {
         return Math.max(0, maxPoints - (int) timeTaken);
     }
 }
-alooo
+sysem
