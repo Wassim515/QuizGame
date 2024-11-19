@@ -1,5 +1,9 @@
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
 
 public class QuizGame {
     public static void main(String[] args) {
@@ -18,13 +22,17 @@ public class QuizGame {
 
         // Huvudmeny
         System.out.println("Välkommen till Quiz Game!");
-       
-        System.out.println("1. Alla kategorier\n2. Välj en specifik kategori\n3. Avsluta");
+        System.out.println("1. Starta spelet");
+        System.out.println("2.Visa highscore");
+        System.out.println("3. Alla kategorier\n2. Välj en specifik kategori\n3. Avsluta");
         int menuChoice = scanner.nextInt();
         scanner.nextLine(); // Konsumera newline
 
         List<Question> selectedQuestions = new ArrayList<>();
         if (menuChoice == 1) {
+            System.out.println("Ange ditt namn:");
+            String playerName = scanner.nextLine();
+            System.out.print("Ange din ålder");
             selectedQuestions.addAll(questions);
         } else if (menuChoice == 2) {
             System.out.println("Välj kategori: Geografi eller Matematik");
