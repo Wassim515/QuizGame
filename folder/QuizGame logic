@@ -31,7 +31,7 @@ public void gameStarts() {
         System.out.println("Let's play the Game!");
         System.out.println("Best of Luck!");
         System.out.println("Choose the category:");
-        System.out.println(press 1 for Maths");
+        System.out.println("press 1 for Maths");
         System.out.println("press 2 for history:");
         System.out.println("press 3 for Sports");
 
