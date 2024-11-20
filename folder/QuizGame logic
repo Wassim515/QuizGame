@@ -18,13 +18,13 @@ public GameLogic() {
         mathsEasy.add(new Question("Maths", "Easy", "What is 18 + 4?", new String[]{"22", "23", "21"}, 0));
         mathsEasy.add(new Question("Maths", "Easy", "What is 6 + 6?", new String[]{"11", "12", "13"}, 2));
 
-        mathsMedium.add(new Question("Maths", "Medium", "What is 22 + 8?", new String[]{"30", "31", "32"}, 0));
-        mathsMedium.add(new Question("Maths", "Medium", "What is 18 + 4?", new String[]{"22", "23", "21"}, 0));
-        mathsMedium.add(new Question("Maths", "Medium", "What is 6 + 6?", new String[]{"11", "12", "13"}, 2));
+        mathsMedium.add(new Question("Maths", "Medium", "What is 23 + 32?", new String[]{"45", "55", "66"},1 ));
+        mathsMedium.add(new Question("Maths", "Medium", "What is 54 + 35?", new String[]{"89", "86", "86"}, 0));
+        mathsMedium.add(new Question("Maths", "Medium", "What is 16 + 24?", new String[]{"40", "42", "54"}, ));
 
-       mathsHard.add(new Question("Maths", "Hard", "What is 22 + 8?", new String[]{"30", "31", "32"}, 0));
-       mathsHard.add(new Question("Maths", "Hard", "What is 18 + 4?", new String[]{"22", "23", "21"}, 0));
-       mathsHard.add(new Question("Maths", "Hard", "What is 6 + 6?", new String[]{"11", "12", "13"}, 2));
+       mathsHard.add(new Question("Maths", "Hard", "What is 22 * 48?", new String[]{"1056", "2124", "1124"}, 0));
+       mathsHard.add(new Question("Maths", "Hard", "What is 558 * 8?", new String[]{"4434", "2323", "4464"}, 1));
+       mathsHard.add(new Question("Maths", "Hard", "What is 53* 6?", new String[]{"318", "342", "234"}, 0));
 public void gameStarts() {
         Scanner entry = new Scanner(System.in);
 
