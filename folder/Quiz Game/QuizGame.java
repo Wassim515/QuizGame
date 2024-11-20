@@ -3,19 +3,13 @@ import java.util.concurrent.TimeUnit;
 
 
 public class QuizGame {
+    @SuppressWarnings("resource")
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         List<Question> questions = new ArrayList<>();
 
         // Skapa frågor
-        questions.add(new Question("Vad är huvudstaden i Frankrike?", 
-            new String[]{"1. Paris", "2. London", "3. Berlin", "4. Madrid"}, "1", 10, "Geografi"));
-        questions.add(new Question("Vilken är världens största ö?", 
-            new String[]{"1. Grönland", "2. Australien", "3. Borneo", "4. Madagaskar"}, "1", 10, "Geografi"));
-        questions.add(new Question("Vad är 5 + 7?", 
-            new String[]{"1. 10", "2. 11", "3. 12", "4. 13"}, "3", 10, "Matematik"));
-            questions.add(new Question("Vad är 5 + 7?", 
-            new String[]{"1. 10", "2. 11", "3. 12", "4. 13"}, "1", 10, "Historia"));
+        
 
         // Huvudmeny
         System.out.println("Välkommen till Quiz Game!");
@@ -30,6 +24,8 @@ public class QuizGame {
             System.out.println("Ange ditt namn:");
             String playerName = scanner.nextLine();
             System.out.print("Ange din ålder");
+            String playerAge = scanner.nextLine();
+            scanner.nextLine();
             selectedQuestions.addAll(questions);
         } else if (menuChoice == 2) {
             System.out.println("Välj kategori: Geografi eller Matematik");
