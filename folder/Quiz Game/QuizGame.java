@@ -4,27 +4,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-
 public class QuizGame {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         List<Question> questions = new ArrayList<>();
 
         // Skapa frågor
-        questions.add(new Question("Vad är huvudstaden i Frankrike?", 
-            new String[]{"1. Paris", "2. London", "3. Berlin", "4. Madrid"}, "1", 10, "Geografi"));
-        questions.add(new Question("Vilken är världens största ö?", 
-            new String[]{"1. Grönland", "2. Australien", "3. Borneo", "4. Madagaskar"}, "1", 10, "Geografi"));
-        questions.add(new Question("Vad är 5 + 7?", 
-            new String[]{"1. 10", "2. 11", "3. 12", "4. 13"}, "3", 10, "Matematik"));
-            questions.add(new Question("Vad är 5 + 7?", 
-            new String[]{"1. 10", "2. 11", "3. 12", "4. 13"}, "1", 10, "Historia"));
+        
 
         // Huvudmeny
         System.out.println("Välkommen till Quiz Game!");
         System.out.println("1. Starta spelet");
         System.out.println("2.Visa highscore");
-        System.out.println("3. Alla kategorier\n2. Välj en specifik kategori\n3. Avsluta");
+        System.out.println("3. Alla kategorier\n4. Välj en specifik kategori\n5. Avsluta");
         int menuChoice = scanner.nextInt();
         scanner.nextLine(); // Konsumera newline
 
