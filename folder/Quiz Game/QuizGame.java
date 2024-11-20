@@ -1,10 +1,8 @@
 import java.util.*;
 import java.util.concurrent.TimeUnit;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
 
 public class QuizGame {
+    @SuppressWarnings("resource")
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         List<Question> questions = new ArrayList<>();
@@ -25,6 +23,8 @@ public class QuizGame {
             System.out.println("Ange ditt namn:");
             String playerName = scanner.nextLine();
             System.out.print("Ange din ålder");
+            String playerAge = scanner.nextLine();
+            scanner.nextLine();
             selectedQuestions.addAll(questions);
         } else if (menuChoice == 2) {
             System.out.println("Välj kategori: Geografi eller Matematik");
@@ -49,6 +49,24 @@ public class QuizGame {
             for (String option : question.getOptions()) {
                 System.out.println(option);
             }
+
+            final int timeLimitSeconds = 20;
+            final int[] remainingtime = {timeLimitSeconds};
+
+           Thread countdownThread = new Thread(() -> {
+    try {
+        while (remainingtime[0] > 0) {
+            System.out.print("Tid kvar: " + remainingtime[0] + " sekunder\r"); // Correct print statement
+            remainingtime[0]--; // Decrease the remaining time
+            Thread.sleep(1000); // Sleep for 1 second before updating the countdown
+        }
+        System.out.println("Tid kvar: 0 sekunder\n"); // When the countdown reaches 0
+    } catch (InterruptedException e) {
+        System.out.println("Countdown interrupted.");
+    }
+});
+
+            countdownThread.start(); 
 
             long questionStartTime = System.currentTimeMillis();
             String userAnswer = getTimedAnswer(scanner, 10); // 10 sekunders tidsgräns
