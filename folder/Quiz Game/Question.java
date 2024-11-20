@@ -1,12 +1,12 @@
 public class Question {
     private String questionText;
-    private string level;
+    private String level;
     private String[] options;
     private String correctAnswer;
     private int maxPoints;
     private String category;
 
-    public Question(String questionText,  string level,String[] options, String correctAnswer, int maxPoints, String category) {
+    public Question(String questionText,  String level,String[] options, String correctAnswer, int maxPoints, String category) {
         this.questionText = questionText;
         this.level = level;
         this.options = options;
