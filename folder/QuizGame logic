@@ -1,0 +1,40 @@
+public class GameLogic {
+    private ArrayList<Question> mathsEasy, mathsMedium, mathsHard;
+    private ArrayList<Question> historyEasy, historyMedium, historyHard;
+    private ArrayList<Question> GernelKnowledgeEasy, GernelKnowledgeMedium, GernelKnowledgeHard;
+    private ArrayList<Question> sportssEasy, sportsMedium, sportsHard;
+
+
+public GameLogic() {
+        mathsEasy = new ArrayList<>();
+        mathsMedium = new ArrayList<>();
+        mathsHard = new ArrayList<>();
+        sportsEasy = new ArrayList<>();
+        sportsMedium = new ArrayList<>();
+        sportsHard = new ArrayList<>();
+
+
+        mathsEasy.add(new QuizQuestions("Maths", "Easy", "What is 22 + 8?", new String[]{"30", "31", "32"}, 0));
+        mathsEasy.add(new QuizQuestions("Maths", "Easy", "What is 18 + 4?", new String[]{"22", "23", "21"}, 0));
+        mathsEasy.add(new QuizQuestions("Maths", "Easy", "What is 6 + 6?", new String[]{"11", "12", "13"}, 2));
+
+        mathsMedium.add(new QuizQuestions("Maths", "Medium", "What is 22 + 8?", new String[]{"30", "31", "32"}, 0));
+        mathsMedium.add(new QuizQuestions("Maths", "Medium", "What is 18 + 4?", new String[]{"22", "23", "21"}, 0));
+        mathsMedium.add(new QuizQuestions("Maths", "Medium", "What is 6 + 6?", new String[]{"11", "12", "13"}, 2));
+
+       mathsHard.add(new QuizQuestions("Maths", "Hard", "What is 22 + 8?", new String[]{"30", "31", "32"}, 0));
+       mathsHard.add(new QuizQuestions("Maths", "Hard", "What is 18 + 4?", new String[]{"22", "23", "21"}, 0));
+       mathsHard.add(new QuizQuestions("Maths", "Hard", "What is 6 + 6?", new String[]{"11", "12", "13"}, 2));
+public void gameStarts() {
+        Scanner entry = new Scanner(System.in);
+
+        System.out.println("Let's play the Game!");
+        System.out.println("Best of Luck!");
+        System.out.println("Choose the category:");
+        System.out.println(press 1 for Maths");
+        System.out.println("press 2 for history:");
+        System.out.println("press 3 for Sports");
+
+      int playerCategory = entry.nextInt();
+        String category = " ";
+
