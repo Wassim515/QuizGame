@@ -32,9 +32,52 @@ public void gameStarts() {
         System.out.println("Best of Luck!");
         System.out.println("Choose the category:");
         System.out.println("press 1 for Maths");
-        System.out.println("press 2 for history:");
+        System.out.println("press 2 for History:");
         System.out.println("press 3 for Sports");
 
-      int playerCategory = entry.nextInt();
-        String category = " ";
+      int playerCategoryChoice = entry.nextInt();
+      String category = " ";
 
+      if (playerategoryChoice == 1) {
+            category = "Maths";
+          } else if (playerategoryChoice == 2) {
+            category = "History";
+        } else if (playerategoryChoice == 3) {
+            category = "Sports";
+        } else {
+            System.out.println("The choice of category in invalid.");
+            return;
+        }
+
+        System.out.println("Choose level:");
+        System.out.println("1. Easy");
+        System.out.println("2. Medium");
+        System.out.println("3. Hard");
+
+        int playerLevelChoice = entry.nextInt();
+        String level = "";
+        if ( playerLevelChoice== 1) {
+            level = "Easy";
+        } else if (playerLevelChoice == 2) {
+            level = "Medium";
+        } else if (playerLevelChoice == 3) {
+            level = "Hard";
+        } else {
+            System.out.println("The choice of level is invalid");
+            return;
+        }
+
+    ArrayList<Question> playerSelection = new ArrayList<>()
+
+    if (category.equals("Maths")) {
+            if (level.equals("Easy")) playerSelection = mathsEasy;
+            else if (level.equals("Medium")) playerSelection = mathsMedium;
+            else if (level.equals("Hard")) playerSelection = mathsHard;
+    else if (category.equals("Sports")) {
+            if (level.equals("Easy"))  playerSelection = sportsEasy;
+            else if (level.equals("Medium"))  playerSelection = sportsMedium;
+            else if (level.equals("Hard"))  playerSelection = sportsHard;
+        }
+
+
+            
