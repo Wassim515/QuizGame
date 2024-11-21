@@ -8,39 +8,69 @@ import java.util.Scanner;
 public class Quiz {
     private List<Question> questions = new ArrayList<>();
     private int score = 0;
+    private String selectedDifficulty = "Lätt";
+
 
     public void loadQuestions() {
         questions.add(new Question(
             "Vilken sport spelar Zlatan Ibrahimović?",
-            Arrays.asList("Fotboll", "Basket", "Tennis", "Hockey"),
+            Arrays.asList("Fotboll", "Basket", "Tennis", "Hockey"), 
             1,
-            "Sport"
-        ));
-        questions.add(new Question(
-            "Vem vann ballandor 2024",
+            "Sport"+
+            "Lätt"
+            ));
+           
+            questions.add(new Question("Vem vann ballandor 2024",
             Arrays.asList("Rodri", "Mppabe", "Ronaldo", "Vini"),
             1,
-            "Sport"));
+            "Sport"+
+            "Medel"
+            
+            ));
             
         questions.add(new Question(
             "Vilket är det största planet i vårt solsystem?",
             Arrays.asList("Mars", "Jupiter", "Saturnus", "Venus"),
             2,
-            "Vetenskap"
+            "Vetenskap"+
+            "Svår"
         ));
         questions.add(new Question(
             "När startade andra världskriget?",
             Arrays.asList("1914", "1939", "1945", "1923"),
             2,
-            "Historia"
+            "Historia"+
+            "medel"
         ));
     }
 
     public void startQuiz(String category) {
-        List<Question> selectedQuestions = getQuestionsByCategory(category);
-        score = 0;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\nVälj en svårighetsnivå:");
+        System.out.println("1. Lätt");
+        System.out.println("2. Medel");
+        System.out.println("3. Svår");
+        System.out.print("Ditt val: ");
+        int difficultyChoice = scanner.nextInt();
 
-        System.out.println("\nStartar quiz i kategorin: " + category);
+        switch (difficultyChoice) {
+            case 1 -> selectedDifficulty = "Lätt";
+            case 2 -> selectedDifficulty = "Medel";
+            case 3 -> selectedDifficulty = "Svår";
+            default -> {
+                System.out.println("Ogiltigt val. Standardnivån Lätt används.");
+                selectedDifficulty = "Lätt";
+            }
+        }
+
+        List<Question> selectedQuestions = getQuestionsByCategoryAndDifficulty(category, selectedDifficulty);
+        if (selectedQuestions.isEmpty()) {
+            System.out.println("\nInga frågor tillgängliga för kategorin " + category + " och svårighetsnivån " + selectedDifficulty);
+            return;
+        }
+        
+        score = 0;
+        System.out.println("\nStartar quiz i kategorin: " + category + "(Nivå: "  + selectedDifficulty + ")");
         long startTime = System.currentTimeMillis();
 
         for (Question q : selectedQuestions) {
@@ -57,7 +87,8 @@ public class Quiz {
         for (int i = 0; i < options.size(); i++) {
             System.out.println((i + 1) + ". " + options.get(i));
         }
-
+        
+        
         int timeLimit = 10; // Sekunder
         int maxPoints = 8;
         final boolean[] answered = {false};
@@ -116,7 +147,7 @@ public class Quiz {
         System.out.println("Du tjänade " + earnedPoints + " poäng för denna fråga.");
     }
 
-    private List<Question> getQuestionsByCategory(String category) {
+    private List<Question> getQuestionsByCategoryAndDifficulty(String category, String diffuculty) {
         if (category.equals("Alla")) {
             return questions;
         }
