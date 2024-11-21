@@ -163,7 +163,7 @@ public class Quiz {
     private void showResults(int totalQuestions, long timeTaken) {
         System.out.println("\n*** Resultat ***");
         System.out.println("Totalt antal frågor: " + totalQuestions);
-        System.out.println("Poäng: " + score);
+        System.out.println("Totalt Poäng: " + score);
         System.out.println("Tid: " + (timeTaken / 1000) + " sekunder");
     }
 }
