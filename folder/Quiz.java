@@ -84,6 +84,7 @@ public class Quiz {
             answered[0] = true;
         });
 
+
         inputThread.start();
 
         try {
