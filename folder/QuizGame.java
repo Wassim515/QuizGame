@@ -12,7 +12,7 @@ public class QuizGame {
         System.out.println("Ange ditt namn:");
         String playerName = scanner.nextLine();
         System.out.println("Ange ålder:");
-        int age = scanner.nextInt();
+        int Age = scanner.nextInt();
         System.out.println("Välkomen "+playerName+" Till spelet");
         
         boolean keepPlaying = true;
