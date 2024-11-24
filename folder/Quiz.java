@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Quiz {
     private List<Question> questions = new ArrayList<>();
     private int score = 0;
+    private int correctAnswers = 0;
     private String selectedDifficulty = "Lätt " + "Medel " + "Svår";
 
 
@@ -109,6 +110,7 @@ public class Quiz {
         }
         
         score = 0;
+        correctAnswers = 0;
         System.out.println("\nStartar quiz i kategorin: " + category + "(Nivå: "  + selectedDifficulty + ")");
         long startTime = System.currentTimeMillis();
 
@@ -179,6 +181,7 @@ public class Quiz {
         if (question.isCorrect(userAnswer[0])) {
             System.out.println("Rätt svar!");
             score += earnedPoints;
+            correctAnswers++;
         } else {
             System.out.println("Fel svar! Rätt svar var: " + options.get(question.getCorrectOption() - 1));
         }
@@ -201,6 +204,7 @@ public class Quiz {
     private void showResults(int totalQuestions, long timeTaken) {
         System.out.println("\n*** Resultat ***");
         System.out.println("Totalt antal frågor: " + totalQuestions);
+        System.out.println("Antal rätta svar: " + correctAnswers);
         System.out.println("Totalt Poäng: " + score);
         System.out.println("Tid: " + (timeTaken / 1000) + " sekunder");
     }
