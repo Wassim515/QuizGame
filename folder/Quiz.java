@@ -8,40 +8,79 @@ import java.util.Scanner;
 public class Quiz {
     private List<Question> questions = new ArrayList<>();
     private int score = 0;
-    private String selectedDifficulty = "Lätt";
+    private String selectedDifficulty = "Lätt " + "Medel " + "Svår";
 
 
     public void loadQuestions() {
-        questions.add(new Question(
+            questions.add(new Question(
             "Vilken sport spelar Zlatan Ibrahimović?",
             Arrays.asList("Fotboll", "Basket", "Tennis", "Hockey"), 
             1,
-            "Sport"+
+            "Sport",
             "Lätt"
             ));
            
             questions.add(new Question("Vem vann ballandor 2024",
             Arrays.asList("Rodri", "Mppabe", "Ronaldo", "Vini"),
             1,
-            "Sport"+
+            "Sport",
             "Medel"
+             ));
             
+            questions.add(new Question( "Vilket land vann VM i fotboll 2014?",
+            Arrays.asList("Brasilien", "Argentina", "Tyskland", "Frankrike"),
+            3,  
+            "Sport",
+            "Svår"
+             ));
+
+            questions.add(new Question(
+            "Vad är vattnets kemiska formel?",
+            Arrays.asList("H2O", "CO2", "O2", "N2"),
+            1,  
+            "Vetenskap",
+            "Lätt"
             ));
-            
-        questions.add(new Question(
+
+            questions.add(new Question(
             "Vilket är det största planet i vårt solsystem?",
             Arrays.asList("Mars", "Jupiter", "Saturnus", "Venus"),
             2,
-            "Vetenskap"+
+            "Vetenskap",
+            "Medel"
+            ));
+
+            questions.add(new Question(
+            "Vad är den primära komponenten i jordens kärna?",
+            Arrays.asList("Järn", "Koppar", "Aluminium", "Kisel"),
+            1,  
+            "Vetenskap",
             "Svår"
-        ));
-        questions.add(new Question(
+            ));
+
+            questions.add(new Question(
             "När startade andra världskriget?",
             Arrays.asList("1914", "1939", "1945", "1923"),
             2,
-            "Historia"+
-            "medel"
-        ));
+            "Historia",
+            "Lätt"
+            ));
+
+            questions.add(new Question(
+            "Vilket land var först med att ge kvinnor rösträtt?",
+            Arrays.asList("Sverige", "Nya Zeeland", "USA", "Storbritannien"),
+            2,  
+            "Historia",
+            "Medel"
+            ));
+
+            questions.add(new Question(
+            "Vad var det ursprungliga namnet på det som idag kallas Sverige innan landet enades?",
+            Arrays.asList("Svealand", "Götaland", "Sverige", "Svitjod"),
+            4,  
+            "Historia",
+            "Svår"
+            ));
     }
 
     public void startQuiz(String category) {
@@ -147,18 +186,17 @@ public class Quiz {
         System.out.println("Du tjänade " + earnedPoints + " poäng för denna fråga.");
     }
 
-    private List<Question> getQuestionsByCategoryAndDifficulty(String category, String diffuculty) {
-        if (category.equals("Alla")) {
-            return questions;
-        }
+    private List<Question> getQuestionsByCategoryAndDifficulty(String category, String difficulty) {
         List<Question> filtered = new ArrayList<>();
         for (Question q : questions) {
-            if (q.getCategory().equalsIgnoreCase(category)) {
+            if ((category.equalsIgnoreCase("Alla") || q.getCategory().equalsIgnoreCase(category)) &&
+                q.getDifficulty().equalsIgnoreCase(difficulty)) {
                 filtered.add(q);
             }
         }
         return filtered;
     }
+    
 
     private void showResults(int totalQuestions, long timeTaken) {
         System.out.println("\n*** Resultat ***");
