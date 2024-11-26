@@ -121,7 +121,19 @@ public class Quiz {
         long endTime = System.currentTimeMillis();
         showResults(selectedQuestions.size(), endTime - startTime);
     }
-
+    private int getPointsForDifficulty(String difficulty) {
+        switch (difficulty.toLowerCase()) {
+            case "lätt":
+                return 10; 
+            case "medel":
+                return 20; 
+            case "svår":
+                return 30; 
+            default:
+                return 0; 
+        }
+    }
+    
     private void askQuestionWithTimer(Question question) {
         System.out.println("\n" + question.getQuestion());
         List<String> options = question.getOptions();
@@ -131,9 +143,10 @@ public class Quiz {
         
         
         int timeLimit = 10; // Sekunder
-        int maxPoints = 8;
+        int maxPoints = getPointsForDifficulty(selectedDifficulty);
         final boolean[] answered = {false};
         final int[] userAnswer = {-1};
+        final long[] startTime = {System.currentTimeMillis()};
 
         Thread timerThread = new Thread(() -> {
             try {
@@ -175,18 +188,22 @@ public class Quiz {
         }
 
         // Räkna ut poäng baserat på återstående tid
-        int remainingTime = Math.max(0, timeLimit - (int) (timerThread.getId() % timeLimit));
-        int earnedPoints = (int) ((remainingTime / (double) timeLimit) * maxPoints);
+        long elapsedTime = System.currentTimeMillis() - startTime[0];
+        int timeTaken = (int) (elapsedTime / 1000);
+        int remainingTime = Math.max(0, timeLimit - timeTaken);
+        int earnedPoints = (int) ((1.0 - (timeTaken / (double) timeLimit)) * maxPoints);
 
         if (question.isCorrect(userAnswer[0])) {
             System.out.println("Rätt svar!");
             score += earnedPoints;
             correctAnswers++;
+            System.out.println("Du tjänade " + earnedPoints + " poäng för denna fråga.");
         } else {
             System.out.println("Fel svar! Rätt svar var: " + options.get(question.getCorrectOption() - 1));
+            System.out.println("Du tjänade 0 poäng för denna fråga.");
         }
 
-        System.out.println("Du tjänade " + earnedPoints + " poäng för denna fråga.");
+       
     }
 
     private List<Question> getQuestionsByCategoryAndDifficulty(String category, String difficulty) {
