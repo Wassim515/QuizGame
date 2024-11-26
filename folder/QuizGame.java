@@ -11,8 +11,19 @@ public class QuizGame {
         System.out.println("\nVälkommen till Quiz-spelet!");
         System.out.println("Ange ditt namn:");
         String playerName = scanner.nextLine();
-        System.out.println("Ange ålder:");
-        int Age = scanner.nextInt();
+        int age = -1;
+        while (age < 0 || age > 120) {
+            System.out.println("Ange din ålder");
+            if (scanner.hasNextInt()) {
+                age = scanner.nextInt();
+                if (age < 0 || age > 120) {
+                    System.out.println("Ogiltig ålder! Vänligen ange en ålder mellan 0 och 100.");
+                }
+            } else {
+                System.out.println("Ogiltigt värde! Vänligen ange ett nummer för åldern.");
+                scanner.next(); 
+            }
+        }
         System.out.println("Välkomen "+playerName+" Till spelet");
         
         boolean keepPlaying = true;
